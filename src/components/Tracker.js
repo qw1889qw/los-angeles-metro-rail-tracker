@@ -33,7 +33,7 @@ const { Overlay } = LayersControl;
 
 const viewport = {
   center: [34.0522, -118.2437],
-  zoom: 11
+  zoom: 11.5
 };
 
 const Tracker = () => {
