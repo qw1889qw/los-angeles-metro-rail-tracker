@@ -10,7 +10,6 @@ import {
   Tooltip
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 import { generate } from 'shortid';
 import { fetchVehicleLocations } from '../helpers';
 import blueLine from '../assets/geojson/blue.geojson';
@@ -27,34 +26,8 @@ import {
   expoStyle,
   goldStyle
 } from '../assets/geojson/geojson-styling.js';
-import blueMarker from '../assets/markers/marker-blue.png';
-import redMarker from '../assets/markers/marker-red.png';
-import greenMarker from '../assets/markers/marker-green.png';
-import purpleMarker from '../assets/markers/marker-purple.png';
-import expoMarker from '../assets/markers/marker-expo.png';
-import goldMarker from '../assets/markers/marker-gold.png';
-import markerShadow from '../assets/markers/marker-shadow.png';
+import { blueIcon, redIcon, greenIcon, purpleIcon, expoIcon, goldIcon } from '../assets/markers/icons';
 const { Overlay } = LayersControl;
-
-/* icons to show train locations */
-
-const iconShared = {
-  iconAnchor: [12, 41],
-  tooltipAnchor: [15, -28],
-  shadowUrl: markerShadow
-};
-
-const createIcon = marker => new L.Icon({
-  iconUrl: marker,
-  ...iconShared
-});
-
-const blueIcon = createIcon(blueMarker);
-const redIcon = createIcon(redMarker);
-const greenIcon = createIcon(greenMarker);
-const purpleIcon = createIcon(purpleMarker);
-const expoIcon = createIcon(expoMarker);
-const goldIcon = createIcon(goldMarker);
 
 /* main part of app */
 
