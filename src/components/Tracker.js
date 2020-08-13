@@ -26,7 +26,14 @@ import {
   expoStyle,
   goldStyle
 } from '../assets/geojson/geojson-styling.js';
-import { blueIcon, redIcon, greenIcon, purpleIcon, expoIcon, goldIcon } from '../assets/markers/icons';
+import {
+  blueIcon,
+  redIcon,
+  greenIcon,
+  purpleIcon,
+  expoIcon,
+  goldIcon
+} from '../assets/markers/icons';
 const { Overlay } = LayersControl;
 
 /* main part of app */
@@ -38,6 +45,14 @@ const viewport = {
 
 const Tracker = () => {
   const [locations, setLocations] = useState([]);
+  const [selectedLines, setSelectedLines] = useState([
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'L'
+  ]);
 
   // fetch once when app starts up
   // route numbers: A = 801, B = 802, C = 803, L = 804, D = 805, E = 806
@@ -54,8 +69,22 @@ const Tracker = () => {
     return () => clearInterval(interval);
   });
 
+  // when a line checkbox gets toggled, set state to show/hide relevant icons
+  const handleOverlayAdd = e => {
+    setSelectedLines([...selectedLines, e.name.slice(0, 1)]);
+  };
+  const handleOverlayRemove = e => {
+    setSelectedLines(selectedLines.filter(line => line !== e.name.slice(0, 1)));
+  };
+
   return (
-    <Map viewport={viewport} zoomSnap={0.5} zoomDelta={0.5}>
+    <Map
+      viewport={viewport}
+      zoomSnap={0.5}
+      zoomDelta={0.5}
+      onOverlayAdd={handleOverlayAdd}
+      onOverlayRemove={handleOverlayRemove}
+    >
       <TileLayer
         url="https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}"
         attribution="map data from OSM; imagery from Mapbox"
@@ -65,7 +94,7 @@ const Tracker = () => {
         accessToken="pk.eyJ1IjoicXcxODg5cXciLCJhIjoiY2p2bG91MmVlMHk3ajN5cGJqNW9hajA5MSJ9.hOR02QLP2CyfV6enYO23WA"
       />
       <LayersControl position="topright">
-        <Overlay checked name="A (Blue) Line">
+        <Overlay checked name="A (Blue) Line" route="801">
           <GeoJSON data={blueLine} style={blueStyle} />
         </Overlay>
         <Overlay checked name="B (Red) Line">
@@ -85,43 +114,48 @@ const Tracker = () => {
         </Overlay>
       </LayersControl>
       {locations.map(({ route, lat, lon }) => {
-        let line;
-        let icon;
-        switch (route) {
-          case '801':
-            line = 'A (Blue Line)';
-            icon = blueIcon;
-            break;
-          case '802':
-            line = 'B (Red) Line';
-            icon = redIcon;
-            break;
-          case '803':
-            line = 'C (Green) Line';
-            icon = greenIcon;
-            break;
-          case '804':
-            line = 'L (Gold) Line';
-            icon = goldIcon;
-            break;
-          case '805':
-            line = 'D (Purple) Line';
-            icon = purpleIcon;
-            break;
-          case '806':
-            line = 'E (Expo) Line';
-            icon = expoIcon;
-            break;
-          default:
-            line = 'unknown line';
-            icon = null;
-            break;
+        // only show icon if corresponding route overlay checked
+        if (selectedLines.includes(route)) {
+          let line;
+          let icon;
+          switch (route) {
+            case 'A':
+              line = 'A (Blue Line)';
+              icon = blueIcon;
+              break;
+            case 'B':
+              line = 'B (Red) Line';
+              icon = redIcon;
+              break;
+            case 'C':
+              line = 'C (Green) Line';
+              icon = greenIcon;
+              break;
+            case 'D':
+              line = 'D (Purple) Line';
+              icon = purpleIcon;
+              break;
+            case 'E':
+              line = 'E (Expo) Line';
+              icon = expoIcon;
+              break;
+            case 'L':
+              line = 'L (Gold) Line';
+              icon = goldIcon;
+              break;
+            default:
+              line = 'unknown line';
+              icon = null;
+              break;
+          }
+          return (
+            <Marker position={[lat, lon]} key={generate()} icon={icon}>
+              <Tooltip>
+                {line}; latitude: {lat}; longitude: {lon}
+              </Tooltip>
+            </Marker>
+          );
         }
-        return (
-          <Marker position={[lat, lon]} key={generate()} icon={icon}>
-            <Tooltip>{line}; latitude: {lat}; longitude: {lon}</Tooltip>
-          </Marker>
-        );
       })}
     </Map>
   );

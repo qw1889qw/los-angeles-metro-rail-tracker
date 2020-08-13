@@ -1,3 +1,13 @@
+// map route numbers to names
+const routeMap = {
+  '801': 'A',
+  '802': 'B',
+  '803': 'C',
+  '804': 'L',
+  '805': 'D',
+  '806': 'E'
+};
+
 export const fetchVehicleLocations = setFunc => {
   // API returns XML
   // have to set current time pretty far in the past or the NextBus API will give strange output
@@ -69,7 +79,6 @@ export const fetchVehicleLocations = setFunc => {
       const newLocations = [];
       allVehicles.forEach(vehicleGroup => {
         for (const vehicle of vehicleGroup) {
-          console.log(vehicle);
           const route = vehicle.getAttribute('routeTag');
           const lat = vehicle.getAttribute('lat');
           const lon = vehicle.getAttribute('lon');
@@ -77,7 +86,7 @@ export const fetchVehicleLocations = setFunc => {
           // also might get a vehicle w/o a routeTag which is also meaningless
           if (route && lat !== '0.0' && lon !== '0.0') {
             newLocations.push({
-              route,
+              route: routeMap[route],
               lat,
               lon
             });
