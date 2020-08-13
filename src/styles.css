@@ -1,0 +1,15 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* specify height (& import Leaflet CSS) so map will show up correctly */
+.leaflet-container {
+  width: 100vw;
+  height: 100vh;
+}
