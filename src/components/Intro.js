@@ -23,8 +23,7 @@ const Intro = props => {
         </a>
       </p>
       <p>
-        updates every 10 seconds; 1-minute delay on locations so don't expect
-        extremely accurate results
+        updates every 10 seconds
       </p>
       <button className="scroll-button" onClick={handleClick}>
         scroll to map
