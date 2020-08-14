@@ -1,4 +1,11 @@
-// map route numbers to names
+// for when "scroll to map"/"go to top" buttons clicked
+export const smoothScroll = ref => {
+  ref.current.scrollIntoView({
+    behavior: 'smooth'
+  });
+};
+
+// map route numbers to names (not exported but used by fetchVehicleLocations)
 const routeMap = {
   '801': 'A',
   '802': 'B',

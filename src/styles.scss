@@ -1,4 +1,5 @@
 $app-main-color: hsla(47, 90%, 55%, 1);
+$app-fonts: system-ui, Arial, sans-serif;
 
 *,
 ::before,
@@ -8,7 +9,7 @@ $app-main-color: hsla(47, 90%, 55%, 1);
 
 body {
   margin: 0;
-  font-family: system-ui, Arial, sans-serif;
+  font-family: $app-fonts;
 }
 
 /* Intro component */
@@ -39,7 +40,7 @@ p {
 .scroll-button {
   width: 300px;
   height: 75px;
-  font-family: system-ui, Arial, sans-serif;
+  font-family: $app-fonts;
   background: $app-main-color;
   color: black;
   border: 2px solid black;
@@ -55,9 +56,24 @@ p {
   }
 }
 
+.intro {
+  position: relative;
+  z-index: 1000;
+}
+
 /* specify height (& import Leaflet CSS) so map will show up correctly */
 .intro,
 .leaflet-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.to-top-button {
+  position: fixed;
+  width: 90px;
+  height: 30px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 999;
+  font-family: $app-fonts;
 }
