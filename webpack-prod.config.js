@@ -1,5 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin');
-const devConfig = require('./webpack-prod.config');
+const devConfig = require('./webpack-dev.config');
 
 module.exports = {
   ...devConfig,

@@ -32,7 +32,7 @@ h1 {
 p {
   font-size: 1.25rem;
   &::before {
-    content: '◨';
+    content: '\25E8';
     padding: 5px;
   }
 }
