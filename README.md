@@ -2,6 +2,8 @@
 
 tracking LA Metro train locations using the NextBus API
 
+created w/ React, Leaflet & React Leaflet
+
 lines:
 - A (Blue)
 - B (Red)

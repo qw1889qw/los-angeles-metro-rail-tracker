@@ -31,6 +31,7 @@ h1 {
 
 p {
   font-size: 1.25rem;
+  max-width: 95vw;
   &::before {
     content: '\25E8';
     padding: 5px;

@@ -23,8 +23,8 @@ const Intro = props => {
         </a>
       </p>
       <p>
-        created w/ <span>React</span>, <span>Leaflet</span> and{' '}
-        <span>React Leaflet</span>
+        updates every 10 seconds; 1-minute delay on locations so don't expect
+        extremely accurate results
       </p>
       <button className="scroll-button" onClick={handleClick}>
         scroll to map
