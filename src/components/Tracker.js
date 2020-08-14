@@ -80,6 +80,7 @@ const Tracker = () => {
   return (
     <Map
       viewport={viewport}
+      minZoom={10}
       zoomSnap={0.5}
       zoomDelta={0.5}
       onOverlayAdd={handleOverlayAdd}
@@ -182,7 +183,7 @@ const Tracker = () => {
           return (
             <Marker position={[lat, lon]} key={generate()} icon={icon}>
               <Tooltip>
-                {line} toward {destination}; latitude: {lat}; longitude: {lon}
+                {line} toward {destination}
               </Tooltip>
             </Marker>
           );
