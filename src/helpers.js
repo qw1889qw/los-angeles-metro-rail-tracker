@@ -77,9 +77,12 @@ export const fetchVehicleLocations = setFunc => {
         expoVehicles
       ];
       const newLocations = [];
+      console.log('new fetch');
       allVehicles.forEach(vehicleGroup => {
         for (const vehicle of vehicleGroup) {
+          console.log(vehicle);
           const route = vehicle.getAttribute('routeTag');
+          const dirTag = vehicle.getAttribute('dirTag');
           const lat = vehicle.getAttribute('lat');
           const lon = vehicle.getAttribute('lon');
           // sometimes the API will return a vehicle w/ lat & lon set to 0.0 which is meaningless
@@ -87,6 +90,7 @@ export const fetchVehicleLocations = setFunc => {
           if (route && lat !== '0.0' && lon !== '0.0') {
             newLocations.push({
               route: routeMap[route],
+              direction: dirTag ? dirTag[4] : null,
               lat,
               lon
             });
@@ -95,4 +99,16 @@ export const fetchVehicleLocations = setFunc => {
       });
       setFunc(newLocations);
     });
+};
+
+// getting destination station from direction
+export const getDestination = (direction, dest0, dest1) => {
+  switch (direction) {
+    case '0':
+      return dest0;
+    case '1':
+      return dest1;
+    default:
+      return 'unknown destination';
+  }
 };

@@ -11,7 +11,7 @@ import {
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { generate } from 'shortid';
-import { fetchVehicleLocations } from '../helpers';
+import { fetchVehicleLocations, getDestination } from '../helpers';
 import blueLine from '../assets/geojson/blue.geojson';
 import redLine from '../assets/geojson/red.geojson';
 import greenLine from '../assets/geojson/green.geojson';
@@ -94,7 +94,7 @@ const Tracker = () => {
         accessToken="pk.eyJ1IjoicXcxODg5cXciLCJhIjoiY2p2bG91MmVlMHk3ajN5cGJqNW9hajA5MSJ9.hOR02QLP2CyfV6enYO23WA"
       />
       <LayersControl position="topright">
-        <Overlay checked name="A (Blue) Line" route="801">
+        <Overlay checked name="A (Blue) Line">
           <GeoJSON data={blueLine} style={blueStyle} />
         </Overlay>
         <Overlay checked name="B (Red) Line">
@@ -113,35 +113,66 @@ const Tracker = () => {
           <GeoJSON data={goldLine} style={goldStyle} />
         </Overlay>
       </LayersControl>
-      {locations.map(({ route, lat, lon }) => {
+      {locations.map(({ route, lat, lon, direction }) => {
         // only show icon if corresponding route overlay checked
         if (selectedLines.includes(route)) {
           let line;
           let icon;
+          let destination;
           switch (route) {
             case 'A':
               line = 'A (Blue Line)';
               icon = blueIcon;
+              destination = getDestination(
+                direction,
+                '7th Street/Metro Center',
+                'Downtown Long Beach'
+              );
               break;
             case 'B':
               line = 'B (Red) Line';
               icon = redIcon;
+              destination = getDestination(
+                direction,
+                'Union Station',
+                'North Hollywood'
+              );
               break;
             case 'C':
               line = 'C (Green) Line';
               icon = greenIcon;
+              destination = getDestination(
+                direction,
+                'Norwalk',
+                'Redondo Beach'
+              );
               break;
             case 'D':
               line = 'D (Purple) Line';
               icon = purpleIcon;
+              destination = getDestination(
+                direction,
+                'Union Station',
+                'Wilshire/Western'
+              );
               break;
             case 'E':
               line = 'E (Expo) Line';
               icon = expoIcon;
+              destination = getDestination(
+                direction,
+                '7th Street/Metro Center',
+                'Downtown Santa Monica'
+              );
               break;
             case 'L':
               line = 'L (Gold) Line';
               icon = goldIcon;
+              destination = getDestination(
+                direction,
+                'APU/Citrus College',
+                'Atlantic'
+              );
               break;
             default:
               line = 'unknown line';
@@ -151,11 +182,12 @@ const Tracker = () => {
           return (
             <Marker position={[lat, lon]} key={generate()} icon={icon}>
               <Tooltip>
-                {line}; latitude: {lat}; longitude: {lon}
+                {line} toward {destination}; latitude: {lat}; longitude: {lon}
               </Tooltip>
             </Marker>
           );
         }
+        return null;
       })}
     </Map>
   );
