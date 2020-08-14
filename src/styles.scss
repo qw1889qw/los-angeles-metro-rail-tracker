@@ -1,0 +1,63 @@
+$app-main-color: hsla(47, 90%, 55%, 1);
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+/* Intro component */
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: black;
+  background: $app-main-color;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: calc(2vw + 300%);
+}
+
+p {
+  font-size: 1.25rem;
+  &::before {
+    content: '◨';
+    padding: 5px;
+  }
+}
+
+.scroll-button {
+  width: 300px;
+  height: 75px;
+  font-family: system-ui, Arial, sans-serif;
+  background: $app-main-color;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  margin: 25px;
+  font-size: 1.25rem;
+  &:active {
+    color: $app-main-color;
+    background: black;
+  }
+  &:focus {
+    outline: 1px solid black;
+  }
+}
+
+/* specify height (& import Leaflet CSS) so map will show up correctly */
+.intro,
+.leaflet-container {
+  width: 100vw;
+  height: 100vh;
+}

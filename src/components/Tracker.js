@@ -80,7 +80,7 @@ const Tracker = () => {
   return (
     <Map
       viewport={viewport}
-      minZoom={10}
+      minZoom={9.5}
       zoomSnap={0.5}
       zoomDelta={0.5}
       onOverlayAdd={handleOverlayAdd}

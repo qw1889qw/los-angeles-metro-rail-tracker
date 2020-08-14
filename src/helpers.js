@@ -77,10 +77,8 @@ export const fetchVehicleLocations = setFunc => {
         expoVehicles
       ];
       const newLocations = [];
-      console.log('new fetch');
       allVehicles.forEach(vehicleGroup => {
         for (const vehicle of vehicleGroup) {
-          console.log(vehicle);
           const route = vehicle.getAttribute('routeTag');
           const dirTag = vehicle.getAttribute('dirTag');
           const lat = vehicle.getAttribute('lat');

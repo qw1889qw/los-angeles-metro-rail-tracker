@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import Intro from './Intro';
+import WithRef from './WithRef';
 import Tracker from './Tracker';
-import '../styles.css';
+import '../styles.scss';
 
 const App = () => {
+  const trackerRef = useRef(null);
+  const handleClick = () => {
+    trackerRef.current.scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
   return (
     <>
-      <Tracker />
+      <Intro onClick={handleClick} />
+      <WithRef ref={trackerRef}>
+        <Tracker />
+      </WithRef>
     </>
   );
 };
