@@ -4,7 +4,7 @@ tracking LA Metro train locations using [the organization's Realtime API](https:
 
 created w/ React, Leaflet & React Leaflet
 
-live version of app: https://los-angeles-metro-rail-tracker.vercel.app/
+live version of app: https://losangelesmetrorailtracker.vercel.app/
 
 lines:
 - A (Blue)
