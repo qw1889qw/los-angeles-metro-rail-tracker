@@ -122,7 +122,7 @@ const Tracker = () => {
           let destination;
           switch (route) {
             case 'A':
-              line = 'A (Blue Line)';
+              line = 'A (Blue) Line';
               icon = blueIcon;
               destination = getDestination(
                 direction,
