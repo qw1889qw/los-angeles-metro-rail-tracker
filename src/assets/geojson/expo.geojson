@@ -5,6 +5,106 @@
   "timestamp": "2020-08-07T17:19:03Z",
   "features": [
     {
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2020-08-23T19:13:02Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/663272237",
+        "electrified": "contact_line",
+        "frequency": "0",
+        "gauge": "1435",
+        "name": "E Line (Expo)",
+        "network": "LACMTA",
+        "operator": "Los Angeles County Metropolitan Transportation Authority",
+        "railway": "light_rail",
+        "voltage": "750"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4907744,
+            34.0148105
+          ],
+          [
+            -118.4909749,
+            34.014641
+          ],
+          [
+            -118.491081,
+            34.0145584
+          ],
+          [
+            -118.491108,
+            34.0145313
+          ],
+          [
+            -118.4911667,
+            34.0144645
+          ],
+          [
+            -118.4912052,
+            34.0144095
+          ],
+          [
+            -118.4916487,
+            34.0137821
+          ],
+          [
+            -118.491689,
+            34.0137225
+          ]
+        ]
+      },
+      "id": "way/663272237"
+    }
+  ]
+},
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2020-08-23T19:21:02Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355366883",
+        "electrified": "contact_line",
+        "frequency": "0",
+        "gauge": "1435",
+        "name": "Expo Line",
+        "network": "LACMTA",
+        "operator": "Los Angeles County Metropolitan Transportation Authority",
+        "railway": "light_rail",
+        "voltage": "750"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4907744,
+            34.0148105
+          ],
+          [
+            -118.4903046,
+            34.015138
+          ],
+          [
+            -118.4899401,
+            34.0154352
+          ]
+        ]
+      },
+      "id": "way/355366883"
+    }
+  ]
+},
+    {
       "type": "Feature",
       "properties": {
         "@id": "way/346995342",
@@ -22,6 +122,7 @@
       "geometry": {
         "type": "LineString",
         "coordinates": [
+          
           [
             -118.4899401,
             34.0154352
