@@ -37,7 +37,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "leaflet": "^1.6.0",
+    "leaflet": "^1.8.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-leaflet": "^2.7.0",
